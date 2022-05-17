@@ -1,0 +1,1 @@
+package com.ibm.academia.ruleta.apirest.exceptions;
