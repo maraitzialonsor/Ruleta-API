@@ -32,11 +32,6 @@ public class Ruleta implements Serializable {
 
     @Column(name="fecha_modificacion")
     private Date fechaModificacion;
-
-    @ManyToOne(optional = true, cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
-
     @OneToMany(mappedBy = "ruleta", fetch = FetchType.LAZY)
     private Set<Apuesta>apuestas;
 

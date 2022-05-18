@@ -13,9 +13,9 @@ import java.util.Date;
 @Setter
 @Getter
 public class RuletaDTO implements Serializable {
-    private static final long serialVersionUID = 3250647385802063424L;
     private Long ruletaId;
     private String nombre;
     private Date fechaCreacion;
     private Date fechaModificacion;
+    private static final long serialVersionUID = 3250647385802063424L;
 }
