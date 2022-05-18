@@ -20,7 +20,7 @@ public class SpringFoxSwagger {
     {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.ibm.academia.apirest.controllers"))
+                .apis(RequestHandlerSelectors.basePackage("com.ibm.academia.ruleta.apirest.controllers"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
@@ -29,12 +29,13 @@ public class SpringFoxSwagger {
     private ApiInfo apiInfo()
     {
         return new ApiInfo(
-                "Universidad Backend API",
-                "API para el manejo de nuestra universidad",
+                "Ruleta Backend API",
+                "API para el manejo de api ruleta",
                 "V1",
                 "Terminos del servicio",
-                new Contact("David Segura", "www.google.com", "mm@gmail.com"),
-                "Licencia de API", "API licencia url", Collections.emptyList()
+                new Contact("Maraitzi Alonso", "www.google.com", "Maraitzi.Rocio.Alonso.Rojas@ibm.com"),
+                "Licencia de API", "API licencia url",
+                Collections.emptyList()
         );
     }
 }
