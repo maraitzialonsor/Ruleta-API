@@ -7,7 +7,7 @@ public class RuletaMapper {
     public static RuletaDTO mapRuleta(Ruleta ruleta){
         RuletaDTO ruletaDTO = new RuletaDTO();
         ruletaDTO.setRuletaId(ruleta.getId());
-        ruletaDTO.setNombre(ruleta.getNombre());
+        ruletaDTO.setEstado(ruleta.getEstaAbierta());
         ruletaDTO.setFechaCreacion(ruleta.getFechaCreacion());
         ruletaDTO.setFechaModificacion(ruleta.getFechaModificacion());
         return ruletaDTO;

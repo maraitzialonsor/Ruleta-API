@@ -1,6 +1,6 @@
 package com.ibm.academia.ruleta.apirest.models.entities;
 
-import com.ibm.academia.ruleta.apirest.enums.EstadoRuleta;
+import com.ibm.academia.ruleta.apirest.enums.Color;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,34 +20,29 @@ public class Ruleta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre_ruleta", nullable = false, unique = true)
-    private String nombre;
-
     @Column(name = "estado_ruleta")
+   private Boolean estaAbierta = false;
+
+    @Column(name = "color")
     @Enumerated(EnumType.STRING)
-    private EstadoRuleta estadoRuleta;
+    private Color color;
+
+    @Column(name = "numero")
+    private Integer numero;
 
     @Column(name="fecha_creacion", nullable=false)
     private Date fechaCreacion;
 
     @Column(name="fecha_modificacion")
     private Date fechaModificacion;
-    @OneToMany(mappedBy = "ruleta", fetch = FetchType.LAZY)
+
+    //@OneToMany(mappedBy = "ruleta", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ruleta", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private Set<Apuesta>apuestas;
 
-    public Ruleta(Long id, String nombre, EstadoRuleta estadoRuleta) {
+    public Ruleta(Long id, Boolean estaAbierta) {
         this.id = id;
-        this.nombre = nombre;
-        this.estadoRuleta = estadoRuleta;
-    }
-
-    @Override
-    public String toString() {
-        return "Ruleta{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", estadoRuleta=" + estadoRuleta +
-                '}';
+        this.estaAbierta = estaAbierta;
     }
 
     @PrePersist

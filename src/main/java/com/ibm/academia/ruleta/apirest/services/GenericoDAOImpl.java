@@ -22,13 +22,6 @@ public class GenericoDAOImpl<E, R extends CrudRepository<E, Long>>implements Gen
 	}
 
 	@Override
-	@Transactional
-	public E guardar(E entidad) {
-		
-		return repository.save(entidad);
-	}
-
-	@Override
 	@Transactional(readOnly = true)
 	public Iterable<E> buscarTodos() {
 		
@@ -42,5 +35,10 @@ public class GenericoDAOImpl<E, R extends CrudRepository<E, Long>>implements Gen
 		repository.deleteById(id);
 		
 	}
-	
+
+	@Override
+	public void crear(E entidad) {
+		repository.save(entidad);
+	}
+
 }
